@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onmec Racing | ITT Jannuzzi Andria - STEM Racing Scuderia</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Rajdhani & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Rajdhani', 'sans-serif'],
+                    },
+                    colors: {
+                        carbon: {
+                            950: '#07090e',
+                            900: '#0d1117',
+                            800: '#161d28',
+                            700: '#212c3d',
+                        },
+                        racing: {
+                            red: '#e60012',
+                            brightRed: '#ff1a2d',
+                            darkRed: '#a8000d',
+                        }
+                    },
+                    boxShadow: {
+                        'neon-red': '0 0 25px rgba(230, 0, 18, 0.4)',
+                        'neon-white': '0 0 20px rgba(255, 255, 255, 0.25)',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-carbon-950 text-gray-100 font-sans antialiased selection:bg-racing-red selection:text-white overflow-x-hidden">
+
+    <!-- ==================== HEADER & NAVBAR ==================== -->
+    <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-carbon-950/85 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo Ufficiale SVG Onmec Racing -->
+                <a href="#home" class="flex items-center space-x-3.5 group">
+                    <div class="relative flex items-center justify-center w-13 h-12 rounded-xl bg-gradient-to-br from-carbon-800 via-carbon-900 to-carbon-950 border border-racing-red/50 shadow-neon-red group-hover:scale-105 group-hover:border-racing-brightRed transition-all duration-300 px-1.5">
+                        <!-- Emblema Vettoriale Custom Onmec Racing -->
+                        <svg viewBox="0 0 110 72" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-11 h-8 drop-shadow-[0_2px_6px_rgba(230,0,18,0.5)]">
+                            <!-- Ala Aerodinamica Superiore / Scia Velocità -->
+                            <path d="M12 14L98 8L88 18H6L12 14Z" fill="#e60012"/>
+                            <path d="M22 22H84L79 26H18L22 22Z" fill="#9ca3af" fill-opacity="0.7"/>
+                            <!-- Monogramma "OM" Spigoloso Style F1 -->
+                            <!-- Lettera O (Esagonale/Aerodinamica) -->
+                            <path d="M18 32H44L49 38V56L43 62H17L12 56V38L18 32ZM22 39V55H39V39H22Z" fill="#ffffff"/>
+                            <!-- Dettaglio Rosso Interno O -->
+                            <path d="M25 43H36V46H25V43Z" fill="#e60012"/>
+                            <!-- Lettera M (Taglio Racing) -->
+                            <path d="M54 32H65L74 46L83 32H94L98 62H87L85 45L74 60L63 45L61 62H50L54 32Z" fill="#ffffff"/>
+                            <!-- Profilo Sottoscocca / Diffusore Inferiore -->
+                            <path d="M8 66H94L102 62H14L8 66Z" fill="#e60012"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display text-2xl font-bold tracking-wider text-white leading-none">
+                            ONMEC <span class="text-racing-red">RACING</span>
+                        </span>
+                        <span class="text-[10px] text-gray-400 uppercase tracking-[0.2em] font-semibold mt-0.5">ITT Jannuzzi</span>
+                    </div>
+                </a>
+
+                <!-- Nav Desktop -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-sm font-semibold text-gray-300 hover:text-racing-red transition-colors uppercase tracking-wider">Home</a>
+                    <a href="#storia" class="text-sm font-semibold text-gray-300 hover:text-racing-red transition-colors uppercase tracking-wider">Storia & Trionfi</a>
+                    <a href="#monoposto" class="text-sm font-semibold text-gray-300 hover:text-racing-red transition-colors uppercase tracking-wider">La Monoposto</a>
+                    <a href="#team" class="text-sm font-semibold text-gray-300 hover:text-racing-red transition-colors uppercase tracking-wider">Il Team</a>
+                    <a href="#contatti" class="px-5 py-2.5 rounded-lg bg-racing-red text-white font-display font-bold uppercase tracking-wider text-sm shadow-neon-red hover:bg-racing-brightRed transition-all transform hover:-translate-y-0.5">
+                        Contatti & Partner
+                    </a>
+                </nav>
+
+                <!-- Hamburger Mobile -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" type="button" class="p-2 rounded-lg text-gray-300 hover:text-white hover:bg-carbon-800 focus:outline-none" aria-label="Menu">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-carbon-900 border-b border-white/10 px-4 pt-3 pb-6 space-y-2">
+            <a href="#home" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-carbon-800 hover:text-racing-red">Home</a>
+            <a href="#storia" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-carbon-800 hover:text-racing-red">Storia & Trionfi</a>
+            <a href="#monoposto" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-carbon-800 hover:text-racing-red">La Monoposto</a>
+            <a href="#team" class="mobile-link block px-3 py-2.5 rounded-lg text-base font-medium text-gray-200 hover:bg-carbon-800 hover:text-racing-red">Il Team</a>
+            <a href="#contatti" class="mobile-link block px-3 py-3 mt-3 text-center rounded-lg bg-racing-red text-white font-display font-bold uppercase tracking-wider">Contatti & Partner</a>
+        </div>
+    </header>
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section id="home" class="relative pt-32 pb-24 lg:pt-48 lg:pb-36 overflow-hidden">
+        <!-- Sfondo Carbonio & Effetti Luce -->
+        <div class="absolute inset-0 bg-[radial-gradient(#1f293d_1px,transparent_1px)] [background-size:24px_24px] opacity-25 -z-10"></div>
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-racing-red/15 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="text-center max-w-4xl mx-auto">
+                <!-- Badge Celebrativo Principale -->
+                <div class="inline-flex flex-wrap items-center justify-center gap-2 px-4 py-2 rounded-full bg-carbon-800/90 border border-racing-red/50 text-white text-xs sm:text-sm font-bold uppercase tracking-widest mb-6 shadow-neon-red">
+                    <span class="flex h-2.5 w-2.5 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-racing-brightRed opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-racing-red"></span>
+                    </span>
+                    <span>1° Posto Selezioni Centro-Sud • Auto più Veloce in Pista • Finalisti Mugello</span>
+                </div>
+
+                <h1 class="font-display text-5xl sm:text-7xl lg:text-8xl font-extrabold uppercase tracking-tight text-white leading-none mb-6">
+                    VELOCITÀ, INNOVAZIONE E INGEGNERIA<br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-racing-red via-racing-brightRed to-white">
+                        DAL CUORE DELL'ITT JANNUZZI
+                    </span>
+                </h1>
+
+                <p class="text-base sm:text-xl text-gray-300 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+                    Siamo il team <strong>Onmec Racing</strong> di Andria. Progettiamo il futuro del motorsport scolastico unendo meccatronica di precisione, aerodinamica avanzata e passione pura.
+                </p>
+
+                <!-- Azioni Rapide -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                    <a href="#monoposto" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-racing-red text-white font-display font-bold text-lg uppercase tracking-wider shadow-neon-red hover:bg-racing-brightRed transition-all transform hover:-translate-y-1">
+                        Scopri l'Auto <i class="fa-solid fa-arrow-right ml-2"></i>
+                    </a>
+                    <a href="#storia" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-carbon-800 border border-white/15 text-white font-display font-bold text-lg uppercase tracking-wider hover:border-racing-red hover:text-racing-red transition-all">
+                        La Nostra Storia
+                    </a>
+                </div>
+
+                <!-- KPI / Traguardi -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-white/10">
+                    <div class="p-4 rounded-xl bg-carbon-900/80 border border-white/5">
+                        <div class="font-display text-3xl sm:text-4xl font-bold text-racing-red">1° Posto</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Selezioni Centro-Sud</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-carbon-900/80 border border-white/5">
+                        <div class="font-display text-3xl sm:text-4xl font-bold text-white">Record</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Auto più Veloce</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-carbon-900/80 border border-white/5">
+                        <div class="font-display text-3xl sm:text-4xl font-bold text-racing-red">Mugello</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Finali Nazionali</div>
+                    </div>
+                    <div class="p-4 rounded-xl bg-carbon-900/80 border border-white/5">
+                        <div class="font-display text-3xl sm:text-4xl font-bold text-white">STEM</div>
+                        <div class="text-xs text-gray-400 uppercase tracking-wider mt-1">Racing Challenge</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== LA NOSTRA STORIA & TRIONFI ==================== -->
+    <section id="storia" class="py-24 bg-carbon-900/60 border-y border-white/10 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Testo Trionfo -->
+                <div>
+                    <span class="text-racing-red font-display font-bold uppercase tracking-widest text-sm">Il Percorso d'Eccellenza</span>
+                    <h2 class="font-display text-4xl sm:text-5xl font-bold text-white uppercase mt-2 mb-6">
+                        Dal laboratorio di Andria <span class="text-racing-red">al Circuito del Mugello</span>
+                    </h2>
+                    <p class="text-gray-300 leading-relaxed mb-4">
+                        Il trionfo del team <strong>Onmec Racing</strong> dell'ITT Jannuzzi di Andria ha lasciato il segno nelle selezioni Centro-Sud del campionato STEM Racing (svltesi presso l'ITS Academy 'A. Cuccovillo'). Con una combinazione perfetta di progettazione CAD, ottimizzazione aerodinamica e ingegneria meccatronica, la nostra monoposto ha sbaragliato la concorrenza.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed mb-8">
+                        Non solo il <strong>1° posto assoluto</strong> nella classifica generale, ma anche il riconoscimento ufficiale per l'<strong>auto più veloce in pista</strong>, che ci ha spalancato le porte delle finali nel tempio della velocità italiano: il <strong>Autodromo Internazionale del Mugello</strong>.
+                    </p>
+
+                    <!-- Punti Chiave -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-carbon-800 border border-white/10">
+                            <i class="fa-solid fa-award text-racing-red text-2xl mb-2"></i>
+                            <h3 class="font-display font-bold text-lg text-white">Eccellenza Territoriale</h3>
+                            <p class="text-xs text-gray-400 mt-1">Orgoglio della meccatronica pugliese e della scuola superiore italiana.</p>
+                        </div>
+                        <div class="p-4 rounded-xl bg-carbon-800 border border-white/10">
+                            <i class="fa-solid fa-gauge-high text-racing-brightRed text-2xl mb-2"></i>
+                            <h3 class="font-display font-bold text-lg text-white">Velocità Pura</h3>
+                            <p class="text-xs text-gray-400 mt-1">Tempi record registrati nei test cronometrati e accelerazione fulminea.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Box Visivo Mugello & Trofeo -->
+                <div class="relative">
+                    <div class="rounded-2xl overflow-hidden border border-white/10 bg-carbon-800 shadow-2xl relative group">
+                        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=1000&q=80" 
+                             alt="Onmec Racing Monoposto in Pista" 
+                             onerror="this.src='https://placehold.co/800x600/161d28/e60012?text=ONMEC+RACING+MUGELLO'"
+                             class="w-full h-80 sm:h-96 object-cover opacity-85 group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-carbon-950 via-carbon-950/40 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 p-5 rounded-xl bg-carbon-900/90 backdrop-blur-md border border-racing-red/40">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs text-racing-red uppercase font-bold tracking-wider">Traguardo Raggiunto</p>
+                                    <p class="font-display text-xl sm:text-2xl font-bold text-white mt-0.5">FINALISTI NAZIONALI STEM RACING</p>
+                                </div>
+                                <div class="w-12 h-12 rounded-full bg-racing-red/20 border border-racing-red flex items-center justify-center text-racing-red">
+                                    <i class="fa-solid fa-trophy text-xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== LA MONOPOSTO / TECH SPECS ==================== -->
+    <section id="monoposto" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-racing-red font-display font-bold uppercase tracking-widest text-sm">Ingegneria Meccatronica</span>
+                <h2 class="font-display text-4xl sm:text-5xl font-bold text-white uppercase mt-2 mb-4">
+                    La Monoposto <span class="text-racing-red">Onmec Racing</span>
+                </h2>
+                <p class="text-gray-400">
+                    Ogni millimetro della nostra vettura è stato studiato, simulato e ottimizzato al computer prima di prendere forma nei reparti dell'ITT Jannuzzi.
+                </p>
+            </div>
+
+            <!-- Griglia Specifiche Tecniche -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Spec 1 -->
+                <div class="p-8 rounded-2xl bg-carbon-900 border border-white/10 hover:border-racing-red/60 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-racing-red/10 border border-racing-red/30 flex items-center justify-center text-racing-red text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-wind"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-white mb-3">Aerodinamica Avanzata</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Studio accurato dei flussi d'aria con software CAD e simulazioni CFD per minimizzare la resistenza frontale e massimizzare il carico deportante in curva.
+                    </p>
+                </div>
+
+                <!-- Spec 2 -->
+                <div class="p-8 rounded-2xl bg-carbon-900 border border-white/10 hover:border-racing-red/60 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-racing-red/10 border border-racing-red/30 flex items-center justify-center text-racing-red text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-feather"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-white mb-3">Materiali Ultraleggeri</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Utilizzo di polimeri compositi ad altissima resistenza e precisione millimetrica per ridurre drasticamente il peso complessivo senza compromessi strutturali.
+                    </p>
+                </div>
+
+                <!-- Spec 3 -->
+                <div class="p-8 rounded-2xl bg-carbon-900 border border-white/10 hover:border-racing-red/60 transition-all group">
+                    <div class="w-14 h-14 rounded-xl bg-racing-red/10 border border-racing-red/30 flex items-center justify-center text-racing-red text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                    </div>
+                    <h3 class="font-display text-2xl font-bold text-white mb-3">Propulsione & Setup</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Sistemi di propulsione calibrati per erogare la massima potenza istantanea allo start, garantendo il record della pista registrato alle selezioni Centro-Sud.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Banner Componenti Chiave Interattivo -->
+            <div class="p-8 rounded-3xl bg-gradient-to-r from-carbon-900 via-carbon-800 to-carbon-900 border border-racing-red/30 shadow-xl flex flex-col lg:flex-row items-center justify-between gap-8">
+                <div>
+                    <span class="text-xs uppercase font-bold tracking-widest text-racing-red">Scheda Tecnica Ufficiale</span>
+                    <h4 class="font-display text-3xl font-bold text-white mt-1">Pronti per la sfida del Mugello</h4>
+                    <p class="text-gray-300 text-sm mt-2 max-w-xl">
+                        Il team tecnico ha perfezionato l'assetto sospensioni e la lubrificazione dei cuscinetti per affrontare i curvoni veloci del circuito toscano.
+                    </p>
+                </div>
+                <div class="flex flex-wrap gap-4">
+                    <div class="px-5 py-3 rounded-xl bg-carbon-950 border border-white/10 text-center">
+                        <span class="block text-xs text-gray-400">Software CAD</span>
+                        <span class="font-display font-bold text-white text-lg">SolidWorks / Fusion</span>
+                    </div>
+                    <div class="px-5 py-3 rounded-xl bg-carbon-950 border border-white/10 text-center">
+                        <span class="block text-xs text-gray-400">Filtro Tolleranza</span>
+                        <span class="font-display font-bold text-racing-red text-lg">&plusmn; 0.05 mm</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== IL TEAM / ROSTER ==================== -->
+    <section id="team" class="py-24 bg-carbon-900/60 border-y border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-racing-red font-display font-bold uppercase tracking-widest text-sm">Le Menti della Scuderia</span>
+                <h2 class="font-display text-4xl sm:text-5xl font-bold text-white uppercase mt-2 mb-4">
+                    Il Nostro <span class="text-racing-red">Team</span>
+                </h2>
+                <p class="text-gray-400">
+                    Studenti dell'ITT Jannuzzi uniti dalla passione per i motori, la meccanica e l'innovazione tecnologica.
+                </p>
+            </div>
+
+            <!-- Griglia Membri -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Membro 1 -->
+                <div class="rounded-2xl bg-carbon-900 border border-white/10 overflow-hidden group hover:border-racing-red/60 transition-all flex flex-col justify-between shadow-lg">
+                    <div class="h-28 bg-gradient-to-r from-racing-red to-carbon-800 p-5 flex justify-between items-start relative">
+                        <span class="px-3 py-1 rounded-full bg-carbon-950/80 text-white text-xs font-display font-bold uppercase">Team Manager</span>
+                        <i class="fa-solid fa-user-gear text-white/30 text-3xl"></i>
+                    </div>
+                    <div class="p-6 -mt-8 relative">
+                        <div class="w-16 h-16 rounded-2xl bg-carbon-800 border-4 border-carbon-900 flex items-center justify-center font-display text-2xl font-bold text-white shadow-xl mb-4">
+                            TM
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-white">Direzione Sportiva</h3>
+                        <p class="text-xs text-racing-red font-semibold uppercase tracking-wider mb-3">Leadership & Strategia</p>
+                        <p class="text-sm text-gray-400">Coordina le attività di reparto, gestisce le tempistiche di progetto e guida la scuderia verso gli obiettivi.</p>
+                    </div>
+                </div>
+
+                <!-- Membro 2 -->
+                <div class="rounded-2xl bg-carbon-900 border border-white/10 overflow-hidden group hover:border-racing-red/60 transition-all flex flex-col justify-between shadow-lg">
+                    <div class="h-28 bg-gradient-to-r from-carbon-700 to-carbon-800 p-5 flex justify-between items-start relative">
+                        <span class="px-3 py-1 rounded-full bg-carbon-950/80 text-white text-xs font-display font-bold uppercase">Design Engineer</span>
+                        <i class="fa-solid fa-pencil text-white/30 text-3xl"></i>
+                    </div>
+                    <div class="p-6 -mt-8 relative">
+                        <div class="w-16 h-16 rounded-2xl bg-carbon-800 border-4 border-carbon-900 flex items-center justify-center font-display text-2xl font-bold text-white shadow-xl mb-4">
+                            DE
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-white">Ingegneria CAD</h3>
+                        <p class="text-xs text-racing-red font-semibold uppercase tracking-wider mb-3">Modellazione 3D & CFD</p>
+                        <p class="text-sm text-gray-400">Specializzato nella progettazione parametrica e nell'analisi fluidodinamica per ottimizzare il profilo della vettura.</p>
+                    </div>
+                </div>
+
+                <!-- Membro 3 -->
+                <div class="rounded-2xl bg-carbon-900 border border-white/10 overflow-hidden group hover:border-racing-red/60 transition-all flex flex-col justify-between shadow-lg">
+                    <div class="h-28 bg-gradient-to-r from-racing-red to-carbon-800 p-5 flex justify-between items-start relative">
+                        <span class="px-3 py-1 rounded-full bg-carbon-950/80 text-white text-xs font-display font-bold uppercase">Manufacturing</span>
+                        <i class="fa-solid fa-gears text-white/30 text-3xl"></i>
+                    </div>
+                    <div class="p-6 -mt-8 relative">
+                        <div class="w-16 h-16 rounded-2xl bg-carbon-800 border-4 border-carbon-900 flex items-center justify-center font-display text-2xl font-bold text-white shadow-xl mb-4">
+                            ME
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-white">Reparto Corse</h3>
+                        <p class="text-xs text-racing-red font-semibold uppercase tracking-wider mb-3">Lavorazioni & Assemblaggio</p>
+                        <p class="text-sm text-gray-400">Cura la produzione fisica dei componenti, l'assemblaggio meccanico e i test di affidabilità sul banco prova.</p>
+                    </div>
+                </div>
+
+                <!-- Membro 4 -->
+                <div class="rounded-2xl bg-carbon-900 border border-white/10 overflow-hidden group hover:border-racing-red/60 transition-all flex flex-col justify-between shadow-lg">
+                    <div class="h-28 bg-gradient-to-r from-carbon-700 to-carbon-800 p-5 flex justify-between items-start relative">
+                        <span class="px-3 py-1 rounded-full bg-carbon-950/80 text-white text-xs font-display font-bold uppercase">Marketing & Sponsor</span>
+                        <i class="fa-solid fa-bullhorn text-white/30 text-3xl"></i>
+                    </div>
+                    <div class="p-6 -mt-8 relative">
+                        <div class="w-16 h-16 rounded-2xl bg-carbon-800 border-4 border-carbon-900 flex items-center justify-center font-display text-2xl font-bold text-white shadow-xl mb-4">
+                            MS
+                        </div>
+                        <h3 class="font-display text-2xl font-bold text-white">Comunicazione</h3>
+                        <p class="text-xs text-racing-red font-semibold uppercase tracking-wider mb-3">Brand & Partner</p>
+                        <p class="text-sm text-gray-400">Gestisce l'identità visiva della scuderia, i social media, le relazioni con gli sponsor e la presentazione ufficiale.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTATTI & SPONSOR ==================== -->
+    <section id="contatti" class="py-24 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Info & Partner (5 colonne) -->
+                <div class="lg:col-span-5 flex flex-col justify-between">
+                    <div>
+                        <span class="text-racing-red font-display font-bold uppercase tracking-widest text-sm">Entra in Contatto</span>
+                        <h2 class="font-display text-4xl sm:text-5xl font-bold text-white uppercase mt-2 mb-6">
+                            Sponsor & <span class="text-racing-red">Partnership</span>
+                        </h2>
+                        <p class="text-gray-400 leading-relaxed mb-8">
+                            Sei un'azienda, un istituto o un appassionato e vuoi supportare la scuderia <strong>Onmec Racing</strong> verso le finali nazionali? Contattaci per collaborazioni e sponsorizzazioni.
+                        </p>
+
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-xl bg-carbon-900 border border-white/10 flex items-center justify-center text-racing-red">
+                                    <i class="fa-solid fa-school text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 uppercase">Istituto di Riferimento</p>
+                                    <p class="text-white font-medium">ITT Jannuzzi • Andria (BT)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                                <div class="w-12 h-12 rounded-xl bg-carbon-900 border border-white/10 flex items-center justify-center text-racing-brightRed">
+                                    <i class="fa-solid fa-envelope text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400 uppercase">Email Ufficiale</p>
+                                    <p class="text-white font-medium">onmec.racing@ittjannuzzi.it</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Partner Loghi / Badge Istituzionali -->
+                        <div class="p-5 rounded-2xl bg-carbon-900 border border-white/10">
+                            <p class="text-xs text-gray-400 uppercase tracking-wider mb-3 font-semibold">Istituti & Partner Coinvolti</p>
+                            <div class="flex flex-wrap gap-2 text-xs font-bold">
+                                <span class="px-3 py-1.5 rounded-lg bg-carbon-800 text-white border border-white/10">ITT Jannuzzi Andria</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-carbon-800 text-racing-red border border-white/10">ITS Cuccovillo</span>
+                                <span class="px-3 py-1.5 rounded-lg bg-carbon-800 text-white border border-white/10">STEM Racing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form di Contatto (7 colonne) -->
+                <div class="lg:col-span-7">
+                    <form id="contact-form" class="p-8 rounded-3xl bg-carbon-900 border border-white/10 shadow-2xl space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Nome o Azienda *</label>
+                                <input type="text" id="name" required placeholder="Es. Mario Rossi / Azienda Srl" 
+                                    class="w-full px-4 py-3.5 rounded-xl bg-carbon-800 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-racing-red transition-colors">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Email di Contatto *</label>
+                                <input type="email" id="email" required placeholder="nome@esempio.it" 
+                                    class="w-full px-4 py-3.5 rounded-xl bg-carbon-800 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-racing-red transition-colors">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="subject" class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Oggetto della Richiesta *</label>
+                            <select id="subject" class="w-full px-4 py-3.5 rounded-xl bg-carbon-800 border border-white/10 text-white focus:outline-none focus:border-racing-red transition-colors">
+                                <option value="sponsor">Proposta di Sponsorizzazione</option>
+                                <option value="collaborazione">Collaborazione Scolastica / Tecnica</option>
+                                <option value="stampa">Richiesta Stampa & Media</option>
+                                <option value="altro">Altro Messaggio</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-gray-400 mb-2">Messaggio *</label>
+                            <textarea id="message" rows="5" required placeholder="Scrivi qui i dettagli della tua richiesta o proposta..." 
+                                class="w-full px-4 py-3.5 rounded-xl bg-carbon-800 border border-white/10 text-white placeholder-gray-500 focus:outline-none focus:border-racing-red transition-colors"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-racing-red text-white font-display font-bold text-lg uppercase tracking-wider shadow-neon-red hover:bg-racing-brightRed transition-all cursor-pointer">
+                            Invia Messaggio <i class="fa-solid fa-paper-plane ml-2"></i>
+                        </button>
+
+                        <!-- Box Feedback Invio -->
+                        <div id="form-feedback" class="hidden p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/40 text-emerald-300 text-sm flex items-center space-x-3">
+                            <i class="fa-solid fa-circle-check text-xl text-emerald-400"></i>
+                            <span id="form-feedback-text">Messaggio inviato con successo! Il team Onmec Racing ti risponderà al più presto.</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-carbon-950 border-t border-white/10 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                <a href="#home" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-9 rounded-lg bg-carbon-900 border border-racing-red/50 flex items-center justify-center px-1 group-hover:border-racing-red transition-colors">
+                        <svg viewBox="0 0 110 72" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-8 h-6">
+                            <path d="M12 14L98 8L88 18H6L12 14Z" fill="#e60012"/>
+                            <path d="M18 32H44L49 38V56L43 62H17L12 56V38L18 32ZM22 39V55H39V39H22Z" fill="#ffffff"/>
+                            <path d="M54 32H65L74 46L83 32H94L98 62H87L85 45L74 60L63 45L61 62H50L54 32Z" fill="#ffffff"/>
+                            <path d="M8 66H94L102 62H14L8 66Z" fill="#e60012"/>
+                        </svg>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display text-2xl font-bold tracking-wider text-white leading-none">
+                            ONMEC <span class="text-racing-red">RACING</span>
+                        </span>
+                        <span class="text-[9px] text-gray-400 uppercase tracking-[0.2em] font-semibold">ITT Jannuzzi</span>
+                    </div>
+                </a>
+
+                <div class="flex flex-wrap justify-center gap-6 text-sm text-gray-400 font-medium">
+                    <a href="#home" class="hover:text-white transition-colors">Home</a>
+                    <a href="#storia" class="hover:text-white transition-colors">Storia</a>
+                    <a href="#monoposto" class="hover:text-white transition-colors">Monoposto</a>
+                    <a href="#team" class="hover:text-white transition-colors">Team</a>
+                    <a href="#contatti" class="hover:text-white transition-colors">Contatti</a>
+                </div>
+
+                <div class="flex items-center space-x-4">
+                    <a href="https://github.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-carbon-900 border border-white/10 flex items-center justify-center text-gray-300 hover:text-racing-red hover:border-racing-red transition-all">
+                        <i class="fa-brands fa-github text-lg"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener" class="w-10 h-10 rounded-xl bg-carbon-900 border border-white/10 flex items-center justify-center text-gray-300 hover:text-racing-red hover:border-racing-red transition-all">
+                        <i class="fa-brands fa-instagram text-lg"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-8 border-t border-white/5 text-center text-xs text-gray-500">
+                &copy; 2026 Onmec Racing • ITT Jannuzzi Andria. Tutti i diritti riservati. Realizzato per STEM Racing Challenge.
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPT INTERATTIVI ==================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Menu Mobile Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+            // 2. Gestione Form di Contatto senza alert()
+            const contactForm = document.getElementById('contact-form');
+            const formFeedback = document.getElementById('form-feedback');
+            const formFeedbackText = document.getElementById('form-feedback-text');
+
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const nameInput = document.getElementById('name').value.trim();
+
+                formFeedbackText.textContent = `Grazie ${nameInput}! Il tuo messaggio è stato ricevuto dal team Onmec Racing. Ti ricontatteremo a breve.`;
+                formFeedback.classList.remove('hidden');
+                contactForm.reset();
+
+                setTimeout(() => {
+                    formFeedback.classList.add('hidden');
+                }, 6000);
+            });
+        });
+    </script>
+</body>
+</html>
